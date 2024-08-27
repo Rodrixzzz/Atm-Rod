@@ -7,4 +7,8 @@
     <RootNamespace>Atm_Rod_Api</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+  </ItemGroup>
+
 </Project>
