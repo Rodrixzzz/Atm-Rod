@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Atm-Rod-Entities\Atm-Rod-Entities.csproj" />
+    <ProjectReference Include="..\Atm-Rod-Repository\Atm-Rod-DataAcces.csproj" />
+  </ItemGroup>
+
 </Project>
