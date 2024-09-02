@@ -11,8 +11,11 @@ namespace Atm_Rod_Repository.Repositories
 {
     public class AccountRepository : GenericRepository<Account>, IAccountRepository
     {
+        private BankDbContext _context;
         public AccountRepository(BankDbContext context) : base(context)
         {
+            _context = context;
         }
+
     }
 }

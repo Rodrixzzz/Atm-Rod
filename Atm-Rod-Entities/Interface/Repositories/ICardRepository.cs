@@ -9,5 +9,6 @@ namespace Atm_Rod_Entities.Interface.Repositories
 {
     public interface ICardRepository: IGenericRepository<Card>
     {
+        public Task<Card> TryGetCard(int cardNumber);
     }
 }

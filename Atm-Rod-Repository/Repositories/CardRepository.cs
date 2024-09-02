@@ -11,8 +11,16 @@ namespace Atm_Rod_Repository.Repositories
 {
     public class CardRepository : GenericRepository<Card>, ICardRepository
     {
+        private BankDbContext _context;
         public CardRepository(BankDbContext context) : base(context)
         {
+            _context = context;
+        }
+        public async Task<Card> TryGetCard(int cardNumber)
+        {
+            var result = _context.Cards.Where(x=> x.Number == cardNumber).FirstOrDefault();
+            
+            return result;
         }
     }
 }

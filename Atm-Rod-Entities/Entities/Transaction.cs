@@ -9,5 +9,8 @@ namespace Atm_Rod_Entities.Entity
 {
     public class Transaction: AuditableEntity
     {
+        public int AccountID { get; set; }
+        public int TransacType { get; set; }
+        public float Amount { get; set; }
     }
 }

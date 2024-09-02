@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Atm_Rod_Entities.Response
 {
-    public class ResponseLogin:ResponseBase
+    public class ResponseLogin
     {
         public string Token { get; set; }
 

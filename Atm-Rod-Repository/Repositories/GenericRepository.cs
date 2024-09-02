@@ -19,10 +19,10 @@ namespace Atm_Rod_Repository.Repositories
             _databaseContext = context;
             _dbSet = context.Set<T>();
         }
-        public async Task AddAsync(T entity)
+        public async Task<int> AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
-            await SaveAsync();
+            return await SaveAsync();
         }
 
         public async Task DeleteByIdAsync(int id)
@@ -39,7 +39,6 @@ namespace Atm_Rod_Repository.Repositories
         {
             return await _dbSet.FindAsync(id);
         }
-
         public async Task<List<T>> GetAllAsync(bool tracked = true)
         {
             IQueryable<T> query = _dbSet;
@@ -52,15 +51,16 @@ namespace Atm_Rod_Repository.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<int> UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
-            await SaveAsync();
+            var result = await SaveAsync();
+            return result;
         }
 
-        public async Task SaveAsync()
+        public async Task<int> SaveAsync()
         {
-            await _databaseContext.SaveChangesAsync();
+            return await _databaseContext.SaveChangesAsync();
         }
     }
 }
