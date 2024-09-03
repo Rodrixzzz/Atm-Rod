@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atm-Rod-Api", "Atm-Rod-Api\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atm-Rod-Logic", "Atm-Rod-Logic\Atm-Rod-Logic.csproj", "{2B58A783-326F-4823-9D8F-00A2653B2247}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atm-Rod-DataAcces", "Atm-Rod-Repository\Atm-Rod-DataAcces.csproj", "{E3A3CF12-F922-49E5-BF74-092D9BFAEEAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atm-Rod-DataAccess", "Atm-Rod-DataAccess\Atm-Rod-DataAccess.csproj", "{E3A3CF12-F922-49E5-BF74-092D9BFAEEAC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{42CE8AC8-C27D-48CA-980D-5EA96F384D15} = {42CE8AC8-C27D-48CA-980D-5EA96F384D15}
 	EndProjectSection

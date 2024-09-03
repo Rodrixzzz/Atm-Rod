@@ -41,7 +41,7 @@ namespace Atm_Rod_Logic.Services
             {
                 throw new CustomException("Not transaction for this account", HttpStatusCode.BadRequest);
             }
-            return new ResponseBalance() { Balance = resultAccount.Balance, LastTransaction = resultTransac.CreatedAt, Name = resultAccount.Name, LastName = resultAccount.LastName };
+            return new ResponseBalance() { Balance = resultAccount.Balance.Value, LastTransaction = resultTransac.CreatedAt.Value, Name = resultAccount.Name, LastName = resultAccount.LastName };
         }
         
     }
