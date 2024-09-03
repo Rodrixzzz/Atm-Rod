@@ -2,7 +2,7 @@
 using Atm_Rod_Entities.Enum;
 using Atm_Rod_Entities.Interface.Repositories;
 using Atm_Rod_Entities.Response;
-using Atm_Rod_Repository.DbUnit;
+using Atm_Rod_DataAccess.DbUnit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atm_Rod_Repository.Repositories
+namespace Atm_Rod_DataAccess.Repositories
 {
     public class TransactionRepository : GenericRepository<Transaction>, ITransactionRepository
     {
@@ -19,17 +19,19 @@ namespace Atm_Rod_Repository.Repositories
         {
             _context = context;
         }
-        public async Task<ResponseOperationsByPage> GetTransactionsPaginatedAsync(int pageSize, int pageNumber, int accountID)
+        public async Task<ResponseOperationsByPage> GetTransactionsPaginatedAsync(int accountID, int pageSize = 10, int pageNumber = 1)
         {
             var result = new ResponseOperationsByPage();
             var resultDb = _context.Transactions.Where(x => x.AccountID == accountID);
+            result.PageNumber = pageNumber;
             result.TotalCount = resultDb.Count();
-            result.TransactionList = resultDb.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            var listToConvert = resultDb.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            listToConvert.ForEach(x =>{result.TransactionList.Add(new ResponseTransaction(x));});
             return result;
         }
         public async Task<Transaction> GetLastTransaction(int accountID, TransacEnum transacType)
         {
-            var result = _context.Transactions.Where(x => x.AccountID == accountID && x.TransacType == (int)transacType).LastOrDefault();
+            var result = _context.Transactions.Where(x => x.AccountID == accountID && x.TransacType == (int)transacType).OrderBy(x=>x.Id).LastOrDefault();
             return result;
         }
     }

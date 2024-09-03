@@ -41,11 +41,11 @@ namespace Atm_Rod_Logic.Services
             {
                 throw new CustomException("The operetation's amount is greater than Account's Balance", HttpStatusCode.BadRequest);
             }
-            response.BeforeBalance = resultAccount.Balance;
-            response.AfterBalance = resultAccount.Balance - request.Amount;
+            response.BeforeBalance = resultAccount.Balance.Value;
+            response.AfterBalance = resultAccount.Balance.Value - request.Amount;
             var transacToAdd = new Transaction() { AccountID = resultAccount.Id, TransacType = (int)TransacEnum.Extraction, CreatedBy = resultAccount.Name + " " + resultAccount.LastName, Amount = request.Amount, CreatedAt = DateTime.Now };
             var responseTransac = await _transactionRepository.AddAsync(transacToAdd);
-            if (responseTransac != 0)
+            if (responseTransac == 0)
             {
                 throw new CustomException("System Error", HttpStatusCode.InternalServerError);
             }
@@ -53,14 +53,6 @@ namespace Atm_Rod_Logic.Services
         }
         public async Task<ResponseOperationsByPage> QueryOperationsByPage(RequestOperationsByPage request)
         {
-            if (request.PageNumber <= 0)
-            {
-                throw new CustomException("Invalid Param: PageNumber", HttpStatusCode.BadRequest);
-            }
-            if (request.PageSize <= 0)
-            {
-                throw new CustomException("Invalid Param: PageSize", HttpStatusCode.BadRequest);
-            }
             var resultCard = await _cardRepository.TryGetCard(request.CardNumber);
             if (resultCard == null)
             {
@@ -71,7 +63,7 @@ namespace Atm_Rod_Logic.Services
             {
                 throw new CustomException("Account not found", HttpStatusCode.BadRequest);
             }
-            return await _transactionRepository.GetTransactionsPaginatedAsync(request.PageSize, request.PageNumber, resultAccount.Id);
+            return await _transactionRepository.GetTransactionsPaginatedAsync(resultAccount.Id, request.PageSize.HasValue ? request.PageSize.Value : 10, request.PageNumber.HasValue ? request.PageNumber.Value : 1);
             
         }
     }

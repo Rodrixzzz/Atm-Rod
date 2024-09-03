@@ -8,7 +8,7 @@ namespace Atm_Rod_Entities.Enum
 {
     public enum TransacEnum
     {
-        Extraction,
+        Extraction = 1,
         Deposit
     }
 }

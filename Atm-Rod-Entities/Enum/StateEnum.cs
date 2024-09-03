@@ -8,7 +8,7 @@ namespace Atm_Rod_Entities.Enum
 {
     public enum StateEnum
     {
-        Active,
+        Active = 1,
         Inactive,
         Blocked
     }

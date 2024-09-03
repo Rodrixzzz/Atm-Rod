@@ -1,5 +1,5 @@
 ﻿using Atm_Rod_Entities.Interface.Repositories;
-using Atm_Rod_Repository.DbUnit;
+using Atm_Rod_DataAccess.DbUnit;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atm_Rod_Repository.Repositories
+namespace Atm_Rod_DataAccess.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

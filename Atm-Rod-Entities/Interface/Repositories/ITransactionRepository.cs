@@ -12,6 +12,6 @@ namespace Atm_Rod_Entities.Interface.Repositories
     public interface ITransactionRepository : IGenericRepository<Transaction>
     {
         Task<Transaction> GetLastTransaction(int accountID, TransacEnum transacType);
-        Task<ResponseOperationsByPage> GetTransactionsPaginatedAsync(int pageSize, int pageNumber, int accountID);
+        Task<ResponseOperationsByPage> GetTransactionsPaginatedAsync(int accountID, int pageSize, int pageNumber);
     }
 }

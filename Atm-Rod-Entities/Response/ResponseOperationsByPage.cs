@@ -9,8 +9,12 @@ namespace Atm_Rod_Entities.Response
 {
     public class ResponseOperationsByPage
     {
-        public IEnumerable<Transaction> TransactionList { get; set; }
+        public List<ResponseTransaction> TransactionList { get; set; }
         public int PageNumber { get; set; }
         public int TotalCount { get; set; }
+        public ResponseOperationsByPage()
+        {
+            TransactionList = new List<ResponseTransaction>();
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atm_Rod_Repository.DbUnit
+namespace Atm_Rod_DataAccess.DbUnit
 {
     public class BankDbContext:DbContext
     {

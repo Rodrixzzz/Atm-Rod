@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atm-Rod-Api", "Atm-Rod-Api\Atm-Rod-Api.csproj", "{9A00A88C-7241-43E1-97E7-DC0B7F05DE1E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E3A3CF12-F922-49E5-BF74-092D9BFAEEAC} = {E3A3CF12-F922-49E5-BF74-092D9BFAEEAC}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atm-Rod-Logic", "Atm-Rod-Logic\Atm-Rod-Logic.csproj", "{2B58A783-326F-4823-9D8F-00A2653B2247}"
 EndProject
@@ -14,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atm-Rod-DataAccess", "Atm-R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atm-Rod-Test", "Atm-Rod-Test\Atm-Rod-Test.csproj", "{0F66421D-09D2-4242-B16E-33439F2BE9F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atm-Rod-Entities", "Atm-Rod-Entities\Atm-Rod-Entities.csproj", "{42CE8AC8-C27D-48CA-980D-5EA96F384D15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atm-Rod-Entities", "Atm-Rod-Entities\Atm-Rod-Entities.csproj", "{42CE8AC8-C27D-48CA-980D-5EA96F384D15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

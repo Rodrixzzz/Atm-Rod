@@ -29,7 +29,7 @@ namespace Atm_Rod_Logic.Services
             var resultCard = await _cardRepository.TryGetCard(requestLogin.CardNumber);
             if (resultCard != null)
             {
-                if (resultCard.Pin == requestLogin.Pin && !resultCard.IsBlocked)
+                if (resultCard.Pin == requestLogin.Pin && !resultCard.IsBlocked.Value)
                 {
                     resultCard.LoginCounter = 0;
                     resultCard.IsBlocked = false;
@@ -41,7 +41,7 @@ namespace Atm_Rod_Logic.Services
                         resultCard.LoginCounter++;
                         resultCard.IsBlocked = resultCard.LoginCounter > 4;
                     }
-                    if (resultCard.IsBlocked)
+                    if (resultCard.IsBlocked.Value)
                     {
                         throw new CustomException("Card Blocked", HttpStatusCode.Unauthorized);
                     }
@@ -51,10 +51,11 @@ namespace Atm_Rod_Logic.Services
                     }
                 }
                 var resultUpdate = await _cardRepository.UpdateAsync(resultCard);
-                if (resultUpdate != 0)
+                if (resultUpdate == 0)
                 {
                     throw new CustomException("Update Error", HttpStatusCode.InternalServerError);
                 }
+
             }
             else
             {

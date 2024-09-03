@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Atm_Rod_Entities.Entity;
 
-namespace Atm_Rod_Repository.FluentConfig
+namespace Atm_Rod_DataAccess.FluentConfig
 {
     public class CardConfig
     {
