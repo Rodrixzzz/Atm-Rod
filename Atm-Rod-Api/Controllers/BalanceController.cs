@@ -7,12 +7,12 @@ using System.Net;
 
 namespace Atm_Rod_Api.Controllers
 {
-    [Route("api/Amount")]
+    [Route("api/[Controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class BalanceController : ControllerBase
     {
         private readonly IAccountService _accountService;
-        public AccountController(IAccountService accountService)
+        public BalanceController(IAccountService accountService)
         {
              _accountService = accountService;
         }
