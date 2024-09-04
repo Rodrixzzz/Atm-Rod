@@ -15,13 +15,11 @@ namespace Atm_Rod_Logic.Services
 {
     public class CardService: ICardService
     {
-        private readonly IGenericRepository<Card> _genericRepository;
         private readonly ICardRepository _cardRepository;
         private readonly IJwtService _jwtService;
-        public CardService(IGenericRepository<Card> repository, ICardRepository cardRepository, IJwtService jwtService)
+        public CardService(ICardRepository cardRepository, IJwtService jwtService)
         {
             _cardRepository = cardRepository;
-            _genericRepository = repository;
             _jwtService = jwtService;
         }
         public async Task<ResponseLogin> Login(RequestLogin requestLogin)

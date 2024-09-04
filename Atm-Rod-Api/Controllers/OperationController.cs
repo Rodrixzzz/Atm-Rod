@@ -1,6 +1,7 @@
 ﻿using Atm_Rod_Entities.Interface.Services;
 using Atm_Rod_Entities.Request;
 using Atm_Rod_Entities.Response;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -23,6 +24,7 @@ namespace Atm_Rod_Api.Controllers
         /// <param name="PageNumber">Numero de Pagina</param>
         /// <returns>Listado de operaciones.</returns>
         [HttpGet]
+        [Authorize]
         [Route("api/ConsultaPaginada")]
         [ProducesResponseType(typeof(CustomResponse<ResponseOperationsByPage>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(CustomResponse<string>), (int)HttpStatusCode.BadRequest)]
@@ -40,6 +42,7 @@ namespace Atm_Rod_Api.Controllers
         /// <param name="Amount">monto de la operacion</param>
         /// <returns>Comprobante de la operacion.</returns>
         [HttpPost]
+        [Authorize]
         [Route("api/NuevaOperacion")]
         [ProducesResponseType(typeof(CustomResponse<ResponseOperation>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(CustomResponse<string>), (int)HttpStatusCode.BadRequest)]

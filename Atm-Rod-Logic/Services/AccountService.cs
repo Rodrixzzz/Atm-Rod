@@ -37,7 +37,7 @@ namespace Atm_Rod_Logic.Services
                 throw new CustomException("Account not found", HttpStatusCode.BadRequest);
             }
             var resultTransac = await _transactionRepository.GetLastTransaction(resultCard.AccountID, Atm_Rod_Entities.Enum.TransacEnum.Extraction);
-            if (resultAccount == null)
+            if (resultTransac == null)
             {
                 throw new CustomException("Not transaction for this account", HttpStatusCode.BadRequest);
             }

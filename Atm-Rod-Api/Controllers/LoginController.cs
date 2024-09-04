@@ -1,5 +1,4 @@
-﻿using Atm_Rod_Entities.Exceptions;
-using Atm_Rod_Entities.Interface.Services;
+﻿using Atm_Rod_Entities.Interface.Services;
 using Atm_Rod_Entities.Request;
 using Atm_Rod_Entities.Response;
 using Microsoft.AspNetCore.Authorization;

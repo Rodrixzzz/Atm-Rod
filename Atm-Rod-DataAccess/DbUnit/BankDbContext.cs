@@ -19,7 +19,6 @@ namespace Atm_Rod_DataAccess.DbUnit
         public DbSet<Transaction> Transactions { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.ApplyConfiguration(new FluentConfiguration.Brand_FluentConfiguration());
         }
     }   
 }

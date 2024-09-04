@@ -34,12 +34,14 @@ namespace Atm_Rod_Logic.Services
 
             var expires = Int32.TryParse(_config["Jwt:DurationInMinutes"], out int parsedExpires) ? parsedExpires : DefautMinutes;
 
-            var jwt = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(expires),
-                signingCredentials: credentials);
+            var jwt = new JwtSecurityToken(_config["Jwt:Issuer"],
+                                           _config["Jwt:Issuer"],
+                                           claims: claims,
+                                           expires: DateTime.Now.AddMinutes(expires),
+                                           signingCredentials: credentials);
 
             var token =  new JwtSecurityTokenHandler().WriteToken(jwt);
+
             return new ResponseLogin(token, expires);
         }
 
