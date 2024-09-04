@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Atm-Rod-Entities\Atm-Rod-Entities.csproj" />
-    <ProjectReference Include="..\Atm-Rod-Repository\Atm-Rod-DataAcces.csproj" />
+    <ProjectReference Include="..\Atm-Rod-DataAccess\Atm-Rod-DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
