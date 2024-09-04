@@ -19,7 +19,7 @@ namespace Atm_Rod_DataAccess.Repositories
         {
             _context = context;
         }
-        public async Task<ResponseOperationsByPage> GetTransactionsPaginatedAsync(int accountID, int pageSize = 10, int pageNumber = 1)
+        public async Task<ResponseOperationsByPage> GetTransactionsPaginatedAsync(int accountID, int pageSize, int pageNumber)
         {
             var result = new ResponseOperationsByPage();
             var resultDb = _context.Transactions.Where(x => x.AccountID == accountID);

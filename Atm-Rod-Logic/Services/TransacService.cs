@@ -49,6 +49,12 @@ namespace Atm_Rod_Logic.Services
             {
                 throw new CustomException("System Error", HttpStatusCode.InternalServerError);
             }
+            resultAccount.Balance -= request.Amount;
+            var responseUpdate = await _repository.UpdateAsync(resultAccount);
+            if (responseUpdate == 0)
+            {
+                throw new CustomException("System Error", HttpStatusCode.InternalServerError);
+            }
             return response;
         }
         public async Task<ResponseOperationsByPage> QueryOperationsByPage(RequestOperationsByPage request)
@@ -63,7 +69,7 @@ namespace Atm_Rod_Logic.Services
             {
                 throw new CustomException("Account not found", HttpStatusCode.BadRequest);
             }
-            return await _transactionRepository.GetTransactionsPaginatedAsync(resultAccount.Id, request.PageSize.HasValue ? request.PageSize.Value : 10, request.PageNumber.HasValue ? request.PageNumber.Value : 1);
+            return await _transactionRepository.GetTransactionsPaginatedAsync(resultAccount.Id, request.PageSize.Value,request.PageNumber.Value);
             
         }
     }
